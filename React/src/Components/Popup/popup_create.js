@@ -165,6 +165,7 @@ const Popup_create = ({set_user_details, user_details, posts_details, set_posts_
         return (
             <>
                 <div className="create-header-text">Create new post</div>
+                <Close_icon />
             </>
         )
     }
@@ -182,7 +183,7 @@ const Popup_create = ({set_user_details, user_details, posts_details, set_posts_
 
     return (
         <div className="popup">
-            {(window.innerWidth <= 1000 && post_stage === 0) ? <Close_icon /> : window.innerWidth > 1000 && <Close_icon />}
+            {/* {(window.innerWidth <= 1000 && post_stage === 0) ? <Close_icon /> : window.innerWidth > 1000 && <Close_icon />} */}
             
             <div className="create" onClick={()=>{close_popup()}}>
                 <div className="create-inner container" onClick={(e)=>{e.stopPropagation()}}>
