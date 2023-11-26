@@ -1,0 +1,93 @@
+.popup{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00000090;
+}
+.popup-close-icon{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.popup-box{
+    width: 861px;
+    max-width: 855px;
+    min-width: 348px;
+    height: fit-content;
+    /* max-height: 400px;
+    min-height: 391px; */
+    padding: 24px;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+/*Change username*/
+.popup-cu{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.popup-cu-header{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+.popup-cu-body{
+    display: flex;
+    flex-direction: column;
+}
+.popup-cu-inputs{
+    display: flex;
+    align-items: center;
+}
+.popup-cu-body-text{
+    font-size: 16px;
+    color: #000000;
+    margin-right: 20px;
+}
+.popup-cu-body-input{
+    font-size: 16px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    padding: 2px 6px;
+    color: #000000;
+}
+.popup-cu-body-errors{
+    font-size: 16px;
+    color: var(--red);
+    text-align: center;
+    margin-top: 8px;
+}
+.popup-cu-body-submit{
+    width: fit-content;
+    background-color: #0095f6;
+    color: #ffffff;
+    padding: 4px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: .2s;
+    margin: 30px auto 0 auto;
+}
+.popup-cu-body-submit:hover{
+    background: #ffffff;
+    border-color: #037bca;
+    color: #037bca;
+}
+
+
+
+/*Change username*/
