@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $uploadedFile = $_FILES['file'];
         $uploadedFile['name'] = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . '.' . pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
-        $uploadPath = $in_development === true ? "../../Files/Posts/" . basename($uploadedFile['name']) : "../../static/media/" . basename($uploadedFile['name']);
+        $uploadPath = "../../Files/Posts/" . basename($uploadedFile['name']);
 
         $is_successfully_stored = false;
 
