@@ -1,6 +1,7 @@
 <?php
 
 $in_development = false;
+// $in_development = true;
 
 // Hostinger - Localhost
 $in_development === false ? $db_servername = "109.106.246.101" : $db_servername = "localhost";

@@ -3,7 +3,7 @@
 }
 .create{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow-y: scroll;
     display: flex;
     justify-content: center;
@@ -89,18 +89,20 @@
     border-bottom-right-radius: 12px;
 }
 
+.popup-close-icon{
+    top: 12px;
+    right: 16px;
+    color: #000000;
+}
+
 @media screen and (max-width: 1000px) {
     .create-inner{
+        width: 100%;
         height: 100%;
         justify-content: flex-start;
     }
     .create-body{
         width: 100%;
         height: 100%;
-    }
-    .popup-close-icon{
-        top: 12px;
-        right: 16px;
-        color: #000000;
     }
 }
