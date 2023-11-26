@@ -84,7 +84,7 @@ const Feed = ({user_details, posts_details, set_posts_details}) => {
                         </div>
                     </div>
                 </div>
-                <img className="feed-body" src={require(`../../../../Api/Files/Posts/${new_post.post_file_name}`)} />
+                <img className="feed-body" src={require(`../../../../Files/Posts/${new_post.post_file_name}`)} />
                 <div className="feed-footer">
                     <div className="feed-footer-left">
                         {new_post.is_liked ? <Like_icon_selected post_details={new_post} /> : <Like_icon post_details={new_post} />}
