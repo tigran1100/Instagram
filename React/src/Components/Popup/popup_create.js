@@ -140,9 +140,9 @@ const Popup_create = ({set_user_details, user_details, posts_details, set_posts_
     
             if(posts_data.reason === true){
 
-                console.log(posts_data)
+                // console.log(posts_data)
 
-                // window.location.reload()
+                window.location.reload()
 
                 // set_posts_details(prev => ({...prev, posts : posts_data.data, posts_max_limit : prev.posts_max_limit + 10}))
                 // posts_data.more === 0 && set_posts_details(prev => ({...prev, posts_left_more : false}))
