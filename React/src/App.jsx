@@ -4,10 +4,13 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-ro
 import axios from 'axios';
 
 // Pages
-import Index from './Pages/index.js';
-import Login from './Pages/login.js';
-import Signup from './Pages/signup.js';
-import Test from './Pages/test.js';
+import Index from './Pages/Index';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
+import Test from './Pages/Test';
+
+// Css
+import "./Css/Style.css"
 
 const App = () => {
 

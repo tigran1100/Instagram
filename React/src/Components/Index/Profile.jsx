@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 
 // Pages
-import Popup from '../Popup/popup.js'
+import Popup from '../Popup/Popup'
 
 // Css
-import '../../Css/style.css'
-import '../../Css/Index/profile.css'
+import '../../Css/Index/Profile.css'
 import axios from "axios";
 
 const Profile = ({set_user_details, user_details}) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // Css
-import '../../Css/Popup/popup.css'
+import '../../Css/Popup/Popup.css'
 import axios from "axios";
 
 

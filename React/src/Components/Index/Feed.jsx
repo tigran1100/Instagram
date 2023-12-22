@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 // Css
-import '../../Css/Index/feed.css';
+import '../../Css/Index/Feed.css';
 
 
 

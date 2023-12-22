@@ -4,11 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Css
-import '../../Css/style.css'
-import '../../Css/Navigation/navbar.css'
+import '../../Css/Navigation/Navbar.css'
 
 // Pages
-import Popup_create from '../Popup/popup_create.js'
+import Popup_create from '../Popup/Popup_create'
 
 
 const NavBar = ({set_user_details, user_details, posts_details, set_posts_details}) => {

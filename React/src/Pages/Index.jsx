@@ -1,16 +1,15 @@
-import React, {useState, useEffect} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 // Components
-import NavBar from "../Components/Index/navBar";
-import Feed from "../Components/Index/feed";
-import Messenger from "../Components/Index/messenger";
+import NavBar from "../Components/Index/Navbar";
+import Feed from "../Components/Index/Feed";
+import Messenger from "../Components/Index/Messenger";
 // import Create from "../Components/Index/create";
-import Profile from "../Components/Index/profile";
+import Profile from "../Components/Index/Profile";
 
 // Css
-import '../Css/style.css'
-import '../Css/Index/index.css'
+import '../Css/Index/Index.css'
 
 const Index = ({set_user_details, user_details, in_page}) => {
 

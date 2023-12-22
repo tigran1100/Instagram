@@ -3,8 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 // Css
-import '../Css/style.css';
-import '../Css/Signup/signup.css';
+import '../Css/Signup/Signup.css';
 
 const Signup = () => {
 
@@ -57,7 +56,7 @@ const Signup = () => {
 
         for(let i = 0; i < fields.length; i++){
 
-            if(inputs[i].value.trim() != ''){
+            if(inputs[i].value.trim() !== ''){
                 fields[i].classList.add("login-field-active")
             }
 
@@ -94,7 +93,7 @@ const Signup = () => {
         }).then(res => {
             console.log(res)
             // console.log(res.data)
-            if(res.data != true && (res.reason != true || res.reason != 'true' || res.reason != 'passed')){
+            if(res.data !== true && (res.reason !== true || res.reason !== 'true' || res.reason !== 'passed')){
                 set_state_error(res.reason)
                 // console.log('error is set')
             }else if(res.data === true){
@@ -114,7 +113,6 @@ const Signup = () => {
         let stateFullName = state_fullName.trim()
         let stateUsername = state_username.trim()
         let statePassword = state_password.trim()
-        let stateError = state_error
 
         if(stateEmail === '' || stateFullName === '' || stateUsername === '' || statePassword === ''){
             set_state_error('Please fill out all fields')

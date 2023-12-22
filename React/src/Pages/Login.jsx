@@ -3,8 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 // Css
-import '../Css/style.css';
-import '../Css/Login/login.css';
+import '../Css/Login/Login.css';
 
 // Images
 import instagram_poster_original from '../Images/Login/poster.png'
@@ -57,13 +56,6 @@ const Login = ({set_user_details}) => {
     }
 
     const handleLogin = async () => {
-
-        const navigate = useNavigate
-
-        const state_username = page_details.username.trim()
-        const state_password = page_details.password.trim()
-        const state_error = page_details.error
-
         
         if(page_details.username.trim() === '' || page_details.password.trim() === ''){
 
@@ -77,7 +69,7 @@ const Login = ({set_user_details}) => {
                 response = response.data
                 // console.log(response)
                 
-                if(response.data != true){
+                if(response.data !== true){
                     set_page_details(prev => ({...prev, 'error' : response.reason}))
                     return false
                 }else{
