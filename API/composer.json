@@ -1,0 +1,6 @@
+{
+    "name": "vendor-name/package-name",
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    }
+}

@@ -1,27 +1,92 @@
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { set_user_details } from '../redux/slices/user_details_redux'
+
 // Other
 import axios from "axios"
-import Domain_functions from "./Domain"
+import Domain_functions from "./domain"
 
 
 // Functions
 
 const API_services = () => {
 
+    // Redux
+    const user_details_redux = useSelector((state) => state.user_details_redux.data)
+    const dispatch = useDispatch()
+
     // Hooks
     const Domain = Domain_functions()
 
-    const Api_request = async (data) => {
+    const Get_token = async (data) => {
     
+        axios.defaults.withCredentials = true
         return new Promise((resolve, reject) => {
             axios({
-                method: 'post',
-                url: `${Domain.Get_API_URL()}/Api_request`,
+                method: 'GET',
+                url: `${Domain.Get_API_URL()}account/token.php`,
                 headers: {
                     'Content-Type': 'application/json',
                     // 'Authorization': `Bearer ${localStorage.getItem("_token")}`,
                 },
                 data: data,
             }).then((res) => {
+                res = res.data
+                if(res === false){
+                    resolve(false)
+                }else{
+                    dispatch(set_user_details(res))
+                    resolve(true)
+                }
+            })
+            .catch((err) => {
+                reject(err)
+            })
+        })
+    }
+
+    const Sign_in = async (data) => {
+    
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'POST',
+                url: `${Domain.Get_API_URL()}account/signin.php`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${localStorage.getItem("_token")}`,
+                },
+                data: data,
+            }).then((res) => {
+                res = res.data
+                // console.log(res)
+                if(res.is_successfull === 1){
+                    dispatch(set_user_details(res.data))
+                }
+                resolve(res)
+            })
+            .catch((err) => {
+                reject(err)
+            })
+        })
+    }
+
+    const Sign_up = async (data) => {
+    
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'POST',
+                url: `${Domain.Get_API_URL()}account/signup.php`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${localStorage.getItem("_token")}`,
+                },
+                data: data,
+            }).then((res) => {
+                res = res.data
+                console.log(res)
+                if(res.is_successfull === 1){
+                    dispatch(set_user_details(res.data))
+                }
                 resolve(res)
             })
             .catch((err) => {
@@ -31,7 +96,9 @@ const API_services = () => {
     }
 
     return {
-        Api_request,
+        Get_token,
+        Sign_in,
+        Sign_up,
     }
 
 }
