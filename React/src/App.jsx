@@ -28,11 +28,10 @@ const App = () => {
 
 }
 
-
 const Track_and_auth_router = () => {
 
     // Redux
-    const user_details_redux = useSelector((state) => state.user_details_redux.data);
+    const user_details_redux = useSelector((state) => state.user_details_redux.data)
 
     // Hooks
     let location = useLocation()
@@ -46,12 +45,16 @@ const Track_and_auth_router = () => {
     // Values
     let valid_pathnames = [
         '/',
+        '/create',
+        '/profile',
         '/login',
         '/signup',
     ]
 
     let authorized_only_pathnames = [
         '/',
+        '/create',
+        '/profile'
     ]
 
     // Effects
@@ -108,9 +111,11 @@ const Track_and_auth_router = () => {
             {
                 (url_params.is_valid && (auth_params.is_checked && ((auth_params.in_auth_only_pathname && auth_params.is_authorized) || !auth_params.in_auth_only_pathname))) ? (
                     <Routes>
-                        <Route path="/" element={<Page_Index />} />
-                        <Route path="/login" element={<Page_Signin />} />
-                        <Route path="/signup" element={<Page_Signup />} />
+                        <Route path="/" element={render_page("/")} />
+                        <Route path="/create" element={render_page("/create")} />
+                        <Route path="/profile" element={render_page("/profile")} />
+                        <Route path="/login" element={render_page("/login")} />
+                        <Route path="/signup" element={render_page("/signup")} />
                     </Routes>
                 ) : (
                     <></>
@@ -118,6 +123,25 @@ const Track_and_auth_router = () => {
             }
         </>
     )
+}
+
+
+
+const render_page = (path) => {
+
+
+
+    if(path === '/'){
+        return <Page_Index />
+    }else if(path === '/create'){
+        return <Page_Index />
+    }else if(path === '/profile'){
+        return <Page_Index />
+    }else if(path === '/login'){
+        return <Page_Signin />
+    }else if(path === '/signup'){
+        return <Page_Signup />
+    }
 }
 
 

@@ -95,10 +95,76 @@ const API_services = () => {
         })
     }
 
+    const Get_all_posts = async (data) => {
+    
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'GET',
+                url: `${Domain.Get_API_URL()}content/posts.php`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${localStorage.getItem("_token")}`,
+                },
+                // data: data,
+            }).then((res) => {
+                res = res.data
+                resolve(res)
+            })
+            .catch((err) => {
+                reject(err)
+            })
+        })
+    }
+
+    const Do_post = async (data) => {
+    
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'POST',
+                url: `${Domain.Get_API_URL()}action/post.php`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${localStorage.getItem("_token")}`,
+                },
+                data: data,
+            }).then((res) => {
+                res = res.data
+                resolve(res)
+            })
+            .catch((err) => {
+                reject(err)
+            })
+        })
+    }
+
+    const Logout = async (data) => {
+    
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'GET',
+                url: `${Domain.Get_API_URL()}action/logout.php`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${localStorage.getItem("_token")}`,
+                },
+                data: data,
+            }).then((res) => {
+                res = res.data
+                resolve(res)
+            })
+            .catch((err) => {
+                reject(err)
+            })
+        })
+    }
+
     return {
         Get_token,
         Sign_in,
         Sign_up,
+        Get_all_posts,
+        Do_post,
+        Logout,
     }
 
 }

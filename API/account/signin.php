@@ -70,7 +70,7 @@ function set_token($data){
     global $secret_key;
 
     $token = generate_token($data, $secret_key);
-    setcookie('_token', $token, time() + (3600 * 24 * 7), '', '', true, true); // Last two are SECURE and HTTPONLY
+    setcookie('_token', $token, time() + (3600 * 24 * 7), '/', '', true, true); // Last two are SECURE and HTTPONLY
     
     $data['_token'] = $token;
     return $data;

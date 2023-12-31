@@ -42,7 +42,9 @@ function return_token(){
     global $secret_key;
 
     if(isset($_COOKIE['_token'])){
-        return json_encode(decode_token($_COOKIE['_token'], $secret_key));
+        $token = decode_token($_COOKIE['_token'], $secret_key);
+        unset($token->private_username);
+        return json_encode($token);
     }else{
         return json_encode(false);
     }

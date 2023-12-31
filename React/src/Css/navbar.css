@@ -36,15 +36,15 @@
     display: flex;
     align-items: center;
     border-radius: 8px;
-    transition: .2s;
+    transition: .1s;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     color: #000000;
 }
 .navbar-link-selected{
     font-weight: 700;
-    background: #f1f1f165;
+    background: #e2e2e265;
 }
 .navbar-link:hover{
     background: rgba(0, 0, 0, .05);
@@ -86,6 +86,7 @@
 .navbar-mobile-header svg{
     width: 103px;
     height: 29px;
+    color: #000000;
 }
 .navbar-mobile-header > .navbar-mobile-header span {
     text-transform: none;
