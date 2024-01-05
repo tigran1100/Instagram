@@ -25,7 +25,7 @@ const Home = () => {
     const API_services = API_services_function()
 
     // States
-    const [posts, set_posts] = useState(<></>)
+    const [posts, set_posts] = useState({posts_object : null, posts_jsx : (<></>)})
 
     // Effects
     useEffect(()=>{
@@ -83,7 +83,7 @@ const Home = () => {
         <>
             <div className="home" id='home'>
                 <div className="home-inner" id='home-inner'>
-                    {posts}
+                    {posts.posts_jsx}
                 </div>
             </div>
         </>

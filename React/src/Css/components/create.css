@@ -47,10 +47,12 @@
     font-size: 16px;
     font-weight: 400;
     color: #1877f2;
+    cursor: pointer;
 }
 .create-header-back{
     width: 16px;
-    color: #000000; 
+    color: #000000;
+    cursor: pointer; 
 }
 .create-body{
     width: 100%;
