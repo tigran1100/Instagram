@@ -38,7 +38,7 @@
     border-radius: 8px;
     transition: .1s;
     cursor: pointer;
-    font-size: 14px;
+    font-size: var(--text-small);
     font-weight: 500;
     color: #000000;
 }

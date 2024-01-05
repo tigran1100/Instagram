@@ -104,6 +104,7 @@
 .home-footer-left-icon{
     margin: 8px 8px 8px 8px;
     cursor: pointer;
+    color: #000000;
 }
 .home-footer-left-icon:first-child{
     margin-left: 0;

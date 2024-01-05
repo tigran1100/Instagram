@@ -39,7 +39,7 @@ function get_posts($data){
         $conn = new PDO("mysql:host=$db_servername;dbname=$db_name", $db_username, $db_password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
-        $stmt = $conn->prepare("SELECT * FROM `posts` LIMIT 100 OFFSET 0");
+        $stmt = $conn->prepare("SELECT `post_comments_count`, `post_created_at`, `post_like_count`, `post_picture`, `post_who_commented`, `post_who_liked`, `post_id`, `profile_picture`, `username` FROM `posts` ORDER BY `post_created_at` DESC LIMIT 100 OFFSET 0");
         // $stmt->bindParam(':post_creator_private_username', $post_creator_private_username, PDO::PARAM_STR);
         $stmt->execute();
         $db_data = $stmt->fetchAll(PDO::FETCH_ASSOC);

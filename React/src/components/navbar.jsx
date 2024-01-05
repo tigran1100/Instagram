@@ -54,9 +54,11 @@ const Navbar = ({page_details, set_page_details, Create}) => {
 
         // Handling redirection
         set_page_details(prev => ({...prev, on_page : page}))
-        if(window.location.pathname !== '/'+page && page !== 'home'){
-            navigate('/'+page)
+        const target_path = (page === 'home') ? '/' : '/' + page
+        if (window.location.pathname !== target_path) {
+            navigate(target_path)
         }
+        
     }
 
     return (

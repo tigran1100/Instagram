@@ -33,12 +33,20 @@ function do_post($data){
     
     // Saving file
     $file_upload_status = false;
-    $base64Image = preg_replace('/^data:image\/(png|jpg|jpeg);base64,/', '', $data['base64']);
+    $base64Image = preg_replace('/^data:image\/(png|jpg|jpeg|svg\+xml);base64,/', '', $data['base64']);
     $imageData = base64_decode($base64Image);
-    $imageInfo = getimagesizefromstring($imageData);
-    $fileExtension = image_type_to_extension($imageInfo[2]);
+    
+    // Check if the image is an SVG file
+    if (strpos($data['base64'], 'data:image/svg+xml') !== false) {
+        $fileExtension = '.svg';
+    } else {
+        // For other image types, use the previous approach
+        $imageInfo = getimagesizefromstring($imageData);
+        $fileExtension = image_type_to_extension($imageInfo[2]);
+    }
 
     $file_name = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . $fileExtension;
+    
     $uploadPath = "../../Files/posts/" . basename($file_name);
 
     file_put_contents($uploadPath, $imageData);

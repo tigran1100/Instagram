@@ -19,9 +19,9 @@ const Index = () => {
     const [page_details, set_page_details] = useState({on_page : 'home'})
 
     // Effects
-    // useEffect(()=>{
-    //     console.log(page_details)
-    // }, [page_details])
+    useEffect(()=>{
+        // console.log(page_details)
+    }, [page_details])
 
     return (
         <>

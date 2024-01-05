@@ -1,6 +1,7 @@
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { set_user_details } from '../redux/slices/user_details_redux'
+import { set_posts_data } from '../redux/slices/posts_redux'
 
 // Other
 import axios from "axios"
@@ -108,9 +109,11 @@ const API_services = () => {
                 // data: data,
             }).then((res) => {
                 res = res.data
+                dispatch(set_posts_data(res.data))
                 resolve(res)
             })
             .catch((err) => {
+                console.warn(err)
                 reject(err)
             })
         })
