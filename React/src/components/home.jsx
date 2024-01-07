@@ -33,7 +33,7 @@ const Home = () => {
     }, [null])
 
     useEffect(() => {
-        console.log("posts_redux: ", posts_redux)
+        // console.log("posts_redux: ", posts_redux)
         const posts = posts_redux.posts_data
         let posts_jsx_local = []
     
@@ -95,8 +95,8 @@ const Home = () => {
             return post_mutable
         })
 
-        API_services.Post_action({action : 'like', post_id : 2147483647}).then(res => {
-            console.log(res)
+        API_services.Post_action({action : 'like', post_id : id}).then(res => {
+            // console.log(res)
         })
         
         dispatch(set_posts_data(new_posts))
@@ -114,8 +114,8 @@ const Home = () => {
             return post_mutable
         })
         
-        API_services.Post_action({action : 'dislike', post_id : 2147483647}).then(res => {
-            console.log(res)
+        API_services.Post_action({action : 'dislike', post_id : id}).then(res => {
+            // console.log(res)
         })
 
         dispatch(set_posts_data(new_posts))

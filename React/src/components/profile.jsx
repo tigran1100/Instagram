@@ -24,7 +24,7 @@ const Profile = () => {
 
     // Effects
     useEffect(()=>{
-        console.log(user_details_redux)
+        // console.log(user_details_redux)
     }, [user_details_redux])
 
     // Functions
@@ -44,9 +44,9 @@ const Profile = () => {
             <div className="profile">
                 <div className="profile-inner container">
                     <div className="prifile-top">
-                        <img className="prifile-top-picture" src={user_details_redux.profile_picture ? `${process.env.REACT_APP_FILES_URL + '/profile_pictures/' + user_details_redux.profile_picture}` : `${process.env.REACT_APP_FILES_URL}/profile_pictures/profile_picture_default.jpg`} />
+                        <img className="prifile-top-picture" src={user_details_redux ? (user_details_redux.profile_picture ? `${process.env.REACT_APP_FILES_URL + '/profile_pictures/' + user_details_redux.profile_picture}` : `${process.env.REACT_APP_FILES_URL}/profile_pictures/profile_picture_default.jpg`) : ''} />
                         <div className="profile-top-texts">
-                            <div className="profile-top-texts-username">{user_details_redux.username}</div>
+                            <div className="profile-top-texts-username">{user_details_redux && user_details_redux.username}</div>
                             <div className="profile-top-texts-edit" onClick={()=>{do_logout()}}>Log out</div>
                             <div className="profile-top-texts-edit" style={{display : 'none'}}>Edit username</div>
                         </div>

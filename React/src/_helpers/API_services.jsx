@@ -84,7 +84,7 @@ const API_services = () => {
                 data: data,
             }).then((res) => {
                 res = res.data
-                console.log(res)
+                // console.log(res)
                 if(res.is_successfull === 1){
                     dispatch(set_user_details(res.data))
                 }
@@ -153,6 +153,7 @@ const API_services = () => {
                 data: data,
             }).then((res) => {
                 res = res.data
+                dispatch(set_user_details(null))
                 resolve(res)
             })
             .catch((err) => {

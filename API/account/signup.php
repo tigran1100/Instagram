@@ -97,6 +97,7 @@ function reg_user($data){
             'posts' => '',
             'profile_picture' => '',
             'username' => $username,
+            'private_username' => $private_username,
         ];
         $return_data['_token'] = set_token($return_data)['_token'];
 

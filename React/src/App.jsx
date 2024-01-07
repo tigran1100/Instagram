@@ -12,6 +12,7 @@ import API_services_function from "./_helpers/api_services"
 import Page_Index from "./pages/index"
 import Page_Signin from "./pages/signin"
 import Page_Signup from "./pages/signup"
+import Page_404 from "./pages/404"
 
 // Css
 import "./css/style.css"
@@ -19,14 +20,6 @@ import "./css/style.css"
 const App = () => {
 
     // Values
-    let valid_pathnames = [
-        '/',
-        '/create',
-        '/profile',
-        '/login',
-        '/signup',
-    ]
-
     let authorized_only_pathnames = [
         '/',
         '/create',
@@ -44,20 +37,11 @@ const App = () => {
         const API_services = API_services_function()
     
         // States
-        const [url_params, set_url_params] = useState({is_valid : false})
         const [auth_params, set_auth_params] = useState({is_checked : false, is_authorized : false, in_auth_only_pathname : false})
     
         // Effects
         useEffect(()=>{
-    
-            if(valid_pathnames.includes(window.location.pathname)) {
-                set_url_params(prev => ({...prev, is_valid : true}))
-            }else{
-                set_url_params(prev => ({...prev, is_valid : false}))
-                navigate('/')
-                return
-            }
-    
+        
             const in_auth_only_pathname = authorized_only_pathnames.includes(window.location.pathname)
     
             if(!auth_params.is_checked){
@@ -67,7 +51,9 @@ const App = () => {
                         set_auth_params(prev => ({...prev, is_checked : true, is_authorized : true, in_auth_only_pathname : in_auth_only_pathname}))
                     }else{
                         set_auth_params(prev => ({...prev, is_checked : true, is_authorized : false, in_auth_only_pathname : in_auth_only_pathname}))
-                        navigate('/login')
+                        if(in_auth_only_pathname){
+                            navigate('/login')
+                        }
                         return
                     }
                 }).catch(err=>{
@@ -85,10 +71,6 @@ const App = () => {
         }, [location])
         
         // useEffect(()=>{
-        //     console.log("url_params: ", url_params)
-        // }, [url_params])
-        
-        // useEffect(()=>{
         //     console.log("auth_params: ", auth_params)
         // }, [auth_params])
         
@@ -96,6 +78,9 @@ const App = () => {
             // console.log("user_details_redux: ", user_details_redux)
             if(!auth_params.is_authorized && user_details_redux && user_details_redux.username){
                 set_auth_params(prev => ({...prev, is_authorized : true}))
+            }
+            if(!user_details_redux){
+                set_auth_params(prev => ({...prev, is_authorized : false}))
             }
         }, [user_details_redux])
     
@@ -111,14 +96,14 @@ const App = () => {
         return (
             <>
                 {
-                    (url_params.is_valid && (auth_params.is_checked && ((auth_params.in_auth_only_pathname && auth_params.is_authorized) || !auth_params.in_auth_only_pathname))) ? (
+                    (auth_params.is_checked && ((auth_params.in_auth_only_pathname && auth_params.is_authorized) || !auth_params.in_auth_only_pathname)) ? (
                         <Routes>
                             <Route path="/" element={render_conditionally(<Page_Index />)} />
                             <Route path="/create" element={render_conditionally(<Page_Index />)} />
                             <Route path="/profile" element={render_conditionally(<Page_Index />)} />
-                            <Route path="/login" element={render_conditionally(<Page_Signin />)} />
-                            <Route path="/signup" element={render_conditionally(<Page_Signup />)} />
-                            <Route path="*" element={<>Not Found</>} />
+                            <Route path="/login" element={<Page_Signin />} />
+                            <Route path="/signup" element={<Page_Signup />} />
+                            <Route path="*" element={<Page_404 />} />
                         </Routes>
                     ) : (
                         <></>
