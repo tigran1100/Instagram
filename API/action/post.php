@@ -46,7 +46,6 @@ function do_post($data){
     }
 
     $file_name = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . $fileExtension;
-    
     $uploadPath = "../../Files/posts/" . basename($file_name);
 
     file_put_contents($uploadPath, $imageData);
@@ -66,15 +65,17 @@ function do_post($data){
         $decoded_token = decode_token();
         $username = $decoded_token->username;
         $private_username = $decoded_token->private_username;
+        $post_id = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
 
         try{
 
             $conn = new PDO("mysql:host=$db_servername;dbname=$db_name", $db_username, $db_password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            $stmt = $conn->prepare("INSERT INTO `posts` (`username`, `private_username`, `post_picture`, `post_like_count`, `post_who_liked`, `post_comments_count`, `post_who_commented`) VALUES (:username, :private_username, '$file_name',  0, '', 0, '')");
+            $stmt = $conn->prepare("INSERT INTO `posts` (`username`, `private_username`, `post_picture`, `post_id`) VALUES (:username, :private_username, '$file_name', '$post_id')");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->bindParam(':private_username', $private_username, PDO::PARAM_STR);
+            // $stmt->bindParam(':post_id', $post_id, PDO::PARAM_STR);
             
             if($stmt->execute()){
                 $database_integration_status = true;

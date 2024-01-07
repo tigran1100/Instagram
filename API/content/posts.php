@@ -34,6 +34,7 @@ function get_posts($data){
     $decoded_token = decode_token();
     $post_creator_private_username = $decoded_token->private_username;
 
+    // return $post_creator_private_username;
     try {
     
         $conn = new PDO("mysql:host=$db_servername;dbname=$db_name", $db_username, $db_password);
@@ -43,6 +44,25 @@ function get_posts($data){
         // $stmt->bindParam(':post_creator_private_username', $post_creator_private_username, PDO::PARAM_STR);
         $stmt->execute();
         $db_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $db_data = array_map(function ($post) use ($post_creator_private_username) {
+            if($post['post_like_count'] === 0){
+                $post['is_liked'] = 0;
+            }else{
+                $who_liked = json_decode($post['post_who_liked'], true);
+                if(in_array($post_creator_private_username, $who_liked)){
+                    $post['is_liked'] = 1;
+                }else{
+                    $post['is_liked'] = 0;
+                }
+            }
+            
+            unset($post['post_who_liked']);
+            unset($post['post_who_commented']);
+
+            return $post;
+        }, $db_data);
+        
 
         return ['data' => $db_data, 'reason' => 1];
 

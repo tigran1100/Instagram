@@ -161,6 +161,27 @@ const API_services = () => {
         })
     }
 
+    const Post_action = async (data) => {
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'POST',
+                url: `${Domain.Get_API_URL()}action/post_action.php`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${localStorage.getItem("_token")}`,
+                },
+                data: data,
+            }).then((res) => {
+                res = res.data
+                resolve(res)
+            })
+            .catch((err) => {
+                reject(err)
+            })
+        })
+    }
+
+
     return {
         Get_token,
         Sign_in,
@@ -168,6 +189,7 @@ const API_services = () => {
         Get_all_posts,
         Do_post,
         Logout,
+        Post_action,
     }
 
 }
